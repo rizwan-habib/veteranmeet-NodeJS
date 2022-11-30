@@ -9,8 +9,12 @@ personal_profile =new mongoose.Schema({
     hobbies:{type:Array},
     profession:{type:String,require:true},
     contact:{type:String,require:true},
-    country:{type:String,require:true},
-    city:{type:String,require:true}
+    city:{type:String,require:true},
+    active_status:{},
+    followers:{type:mongoose.Schema.objectId},
+    following:{type:mongoose.Schema.objectId},
+    starts:{},
+    intrestedEvents:{}
 
 })
 
