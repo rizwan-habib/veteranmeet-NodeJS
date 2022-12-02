@@ -1,19 +1,22 @@
-const DB =require('../Schema/create_account');
+const DB =require('../Schema/profile');
 
 const login_DB =require('../Schema/login')
 
 const create_account = async(req,res,next)=>{
 
     const create = new DB ({
-
-        //email:req.body.email,
-        //passwd:req.body.passwd,
+        
         name:req.body.name,
-        hobbies:req.body.hobbies,
-        profession:req.body.profession,
+        email:req.body.email,
+        passwd:req.body.passwd,
         contact:req.body.constact,
-        country:req.body.country,
-        city:req.body.city
+        hobies:req.body.hobies,
+        profession:req.body.profession,
+        city:req.body.city,
+        followers:[],
+        following:[],
+        starts:[],
+        intrestedEvents:[]
 
     })
 

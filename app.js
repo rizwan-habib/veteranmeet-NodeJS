@@ -4,13 +4,12 @@ const bodyParser = require('body-parser');
 
 const mongoose=require('mongoose');
 
-//const login_caller=require('./Controller/login');
-//const account_caller=require('./Controller/Creat_account');
-//const org_caller=require('./Controller/organization_account');
-
-const profile_caller=require('./Controller/profile');
-const foloowers_caller=require('./Controller/followers')
-
+const {create_account}= require("./Controller/Creat_account")
+//const { createpost, getposts } = require('./Controller/post');
+const { createevent, suggestion, suggestion_Location } = require('./Controller/event');
+const { profile, follow_person, login_profile } = require('./Controller/profile');
+const { org_account } = require('./Controller/organization_account');
+ 
 
 const app = express();
 app.use(bodyParser.json());
@@ -24,16 +23,21 @@ mongoose.connect(
   })
   
 
-  // app.post('/login',login_caller.login);
-  // app.post('/create_account',account_caller.create_account)
+  //app.post('/login',login_profile);
+   app.post('/create_account',create_account)
   
-  // app.post('/organization_account',org_caller.org_account)
 
 
-  app.post('/profile',profile_caller.profile)
-
-  app.post('/follow',profile_caller.follow_person)
+  app.post('/profile',profile)
+  app.post('/follow',follow_person)
+  app.post('/organization_account',org_account)
+  //app.post('/create_post',createpost)
+  //app.post('/getPosts',getposts)
+  app.post('/create_event',createevent)
+  app.post('/suggestion_hobbies',suggestion)
+  app.post("/suggestion_location",suggestion_Location)
+ 
   
-  //app.post('/followers/:id',foloowers_caller.followers)
 
-app.listen(3000);
+  
+app.listen(3001);
