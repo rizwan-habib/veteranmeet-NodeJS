@@ -20,6 +20,7 @@ const createevent = async (req, res, next) => {
     res.send("done")
 }
 
+
 // const getposts = async (req, res, next) => {
 
 //     const data = await DB.find({ email: req.body.email });
