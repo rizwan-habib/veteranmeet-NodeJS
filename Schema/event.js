@@ -32,7 +32,7 @@ const Event = new mongoose.Schema({
         type: String
        // required: true
     },
-    hobies: {
+    hobbies: {
         type: Array
     }
 

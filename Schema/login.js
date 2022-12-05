@@ -6,7 +6,7 @@ login = new mongoose.Schema({
         required: true
       
     },
-    passwd:{}
+    password:{}
 
 })
 

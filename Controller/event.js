@@ -14,7 +14,7 @@ const createevent = async (req, res, next) => {
        // stars: Number(req.body.stars),
         location: req.body.location,
         descreption: req.body.descreption,
-        hobies: req.body.hobies
+        hobbies: req.body.hobbies
     })
     newevent.save();
     res.send("done")
@@ -39,16 +39,16 @@ const suggestion=async(req,res,next)=>{
  for(let i=0;i<(all_events).length;i++)
  {
     
-    for(let j=0;j<(profile[0].hobies).length;j++)
+    for(let j=0;j<(profile[0].hobbies).length;j++)
     {
        
-        for(let k=0;k<(all_events[i].hobies).length;k++)
+        for(let k=0;k<(all_events[i].hobbies).length;k++)
         {
-            console.log(all_events[i].hobies[k]);
-            console.log(profile[j].hobies[j]);
+            console.log(all_events[i].hobbies[k]);
+            console.log(profile[j].hobbies[j]);
             console.log(i)
 
-            if(profile[j].hobies[j] === all_events[i].hobies[k])
+            if(profile[j].hobbies[j] === all_events[i].hobbies[k])
             {
             
                 console.log("matched");

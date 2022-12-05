@@ -8,7 +8,7 @@ const org_account = async (req,res,next) =>{
 
     const creat_account = new DB ({
         email:req.body.email,
-        passwd:req.body.passwd,
+        password:req.body.password,
         name_of_org:req.body.name_of_org,
         category:req.body.category,
         contact:req.body.contact,
@@ -19,17 +19,17 @@ const org_account = async (req,res,next) =>{
     const login =new login_DB({
 
         email:req.body.email,
-        passwd:req.body.passwd
+        password:req.body.password
 
     })
 
     const user_login = await login_DB.findOne({ email: req.body.email}).select("email").lean();
-    //const Name = await DB.findOne({ passwd: req.body.name}).select("name").lean();
+    //const Name = await DB.findOne({ password: req.body.name}).select("name").lean();
     
         if (user_login) {
 
             const user_login = await login_DB.findOne({email: req.body.email}).select("email").lean();
-          // const Name = await DB.findOne({passwd: req.body.passwd}).select("name").lean();
+          // const Name = await DB.findOne({password: req.body.password}).select("name").lean();
             console.log("Organization  Already exist")
            
            //res.send(result)

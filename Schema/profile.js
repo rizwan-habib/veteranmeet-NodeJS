@@ -8,7 +8,7 @@ profile=new mongoose.Schema({
 
     name:{},
     email:{type:String},
-    passwd:{},
+    password:{},
     contact:{},
    
     active_status:{},

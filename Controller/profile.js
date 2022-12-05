@@ -9,11 +9,11 @@ const profile = async(req,res,next)=>{
 
         name:req.body.name,
         email:req.body.email,
-        passwd:req.body.passwd,
+        password:req.body.password,
         contact:req.body.contact,
         active_status:false,
         city:req.body.city,
-        hobies:req.body.hobies,
+        hobbies:req.body.hobbies,
         profession:req.body.profession,
         followers:[],
         following:[],
