@@ -24,10 +24,10 @@ const Event = new mongoose.Schema({
         type: String
         //required: true
     },
-    // stars: {
-    //     type: Number,
-    //     max: 5000
-    // },
+    stars: {
+        type: Number,
+        max: 5000
+    },
     location: {
         type: String
        // required: true

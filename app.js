@@ -3,13 +3,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
-// const { login } = require("./Controller/login")
-// const { create_account } = require("./Controller/Creat_account")
-//const { createpost, getposts } = require('./Controller/post');
-const { createevent, suggestion, suggestion_Location, vet_invitaion } = require('./Controller/event');
+const { login } = require("./Controller/login")
+const { create_account } = require("./Controller/Creat_account")
+// const { createpost, getposts } = require('./Controller/post');
+const { createevent, suggestion, suggestion_Location, vet_invitaion, assign_stars_byvet } = require('./Controller/event');
 const { profile, follow_person, interestEvent, follow_org, get_veteran_posts, get_org_posts } = require('./Controller/profile');
 const { org_account } = require('./Controller/Organization/organization_account');
-const { org_events } = require("./Controller/Organization/Organization_event");
+const { org_events, assign_stars, assign_stars_byorg } = require("./Controller/Organization/Organization_event");
 const { org_invitaion } = require('./Controller/Organization/organization_invitation');
 const { getPersonalPosts, createpost } = require('./Controller/post');
 
@@ -43,6 +43,8 @@ app.post('/create_post', createpost)
 app.post('/getVetPosts', get_veteran_posts)
 app.post('/getOrgPosts', get_org_posts)
 app.post('/getPersonalPosts', getPersonalPosts)
+app.post('/assignStarsbyOrg', assign_stars_byorg)//done
+app.post('/assignStarsbyVet', assign_stars_byvet)
 
 
 app.listen(3001);

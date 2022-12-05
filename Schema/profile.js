@@ -10,7 +10,7 @@ profile=new mongoose.Schema({
     email:{type:String},
     passwd:{},
     contact:{},
-   
+    stars:{},
     active_status:{},
     organizations:{},
     hobies:{},
@@ -19,7 +19,8 @@ profile=new mongoose.Schema({
     following:{type:Array},
     starts:{},
     intrestedEvents:{},
-    invitations:{type:Array}
+    invitations:{type:Array},
+    category:{}
 
     
 })

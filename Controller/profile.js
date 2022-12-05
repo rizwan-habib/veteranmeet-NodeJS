@@ -22,7 +22,8 @@ const profile = async (req, res, next) => {
         following: [],
         stars: 0,
         intrestedEvents: [],
-        invitation: []
+        invitation: [],
+        category:"none"
 
     })
 

@@ -11,7 +11,7 @@ const createevent = async (req, res, next) => {
         name: req.body.name,
         type: req.body.type,
         time: req.body.time,
-        // stars: Number(req.body.stars),
+        stars: Number(req.body.stars),
         location: req.body.location,
         descreption: req.body.descreption,
         hobies: req.body.hobies
@@ -102,9 +102,42 @@ const suggestion_Location = async (req, res, next) => {
     res.send(all_events)
 
 }
-
+const assign_stars_byvet = async (req, res, next) => {
+    const event = await DB.findOne({ eventid: req.body.eventid })   //veteran vet_event
+    let stars = event.stars;
+    if (stars >= req.body.stars) {
+        await profile_DB.findOneAndUpdate({ email: req.body.email }, { $inc: { stars: req.body.stars } })   //profile stars update
+        await DB.findOneAndUpdate({ eventid: req.body.eventid }, { $inc: { stars: -req.body.stars } })   //event stars update
+        let profile = await profile_DB.findOne({ email: req.body.email })
+        console.log(profile)
+        let stars1=profile.stars;
+        if(stars1>= 100000){
+            await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Eternal Stage" })   //profile stars update
+        }
+        else if(stars1>= 70000){
+            await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Platinum Veteran" })   //profile stars update
+        }
+        else if(stars1>= 65000){
+            await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Sapphire Veteran" })   //profile stars update
+        }
+        else if(stars1>= 60000){
+            await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Diamond Veteran" })   //profile stars update
+        }
+        else if(stars1>= 50000){
+            await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Golden Veteran" })   //profile stars update
+        }
+        else if(stars1>= 40000){
+            await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Ruby Veteran" })   //profile stars update
+        }
+        else if(stars1>= 25000){
+            await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Silver Veteran" })   //profile stars update
+        }
+        
+    }
+    res.send("done")
+}
 exports.suggestion_Location = suggestion_Location
-
+exports.assign_stars_byvet = assign_stars_byvet
 exports.vet_invitaion = vet_invitaion
 exports.suggestion = suggestion
 exports.createevent = createevent
