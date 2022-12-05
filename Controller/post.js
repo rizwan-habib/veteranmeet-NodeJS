@@ -1,5 +1,6 @@
 
 const DB = require('../Schema/post')
+const profileDB = require('../Schema/post')
 const createpost = async (req, res, next) => {
 
     const newpost = new DB({
@@ -16,6 +17,7 @@ const getPersonalPosts = async (req, res, next) => {
     // console.log(user_login)
     res.json(data)
 }
+
 
 
 exports.createpost = createpost

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Post = new mongoose.Schema({
-    email:{
+    email: {
         type: String,
         required: true
     },
@@ -9,8 +9,10 @@ const Post = new mongoose.Schema({
         type: String,
         required: true
     },
-    multimedia: {
-         
+    img:
+    {
+        data: Buffer,
+        contentType: String
     }
 
 })
