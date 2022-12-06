@@ -13,7 +13,7 @@ profile=new mongoose.Schema({
    
     active_status:{},
     
-    hobiies:{},
+    hobbies:{},
     profession:{},
     followers:{type:Array},
     following:{type:Array},
