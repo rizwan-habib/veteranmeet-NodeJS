@@ -23,7 +23,7 @@ const profile = async (req, res, next) => {
         stars: 0,
         intrestedEvents: [],
         invitation: [],
-        category:"none"
+        category: "none"
 
     })
 
@@ -60,7 +60,8 @@ const get_veteran_posts = async (req, res, next) => {
     let posts = []
     for (let i = 0; i < id.following.length; i++) {
         const id2 = await POSTS.find({ email: id.following[i] })
-        posts.push(id2)
+        console.log(id2)
+        posts = posts.concat(id2)
     }
     res.send(posts)
 }
@@ -69,18 +70,19 @@ const get_org_posts = async (req, res, next) => {
     let posts = []
     for (let i = 0; i < id.organizations.length; i++) {
         const id2 = await POSTS.find({ email: id.organizations[i] })
-        posts.push(id2)
+        console.log(id2)
+        posts = posts.concat(id2)
     }
     res.send(posts)
 }
 
 const follow_org = async (req, res, next) => {
-    await DB.findOneAndUpdate({ email: req.body.email1 },{ $push: { organizations: req.body.email2 } })
+    await DB.findOneAndUpdate({ email: req.body.email1 }, { $push: { organizations: req.body.email2 } })
     res.send("done")
 }
 
 const interestEvent = async (req, res, next) => {
-    await DB.findOneAndUpdate({ email: req.body.email },{ $push: { intrestedEvents: req.body.eventID } })
+    await DB.findOneAndUpdate({ email: req.body.email }, { $push: { intrestedEvents: req.body.eventID } })
     res.send("done")
 }
 

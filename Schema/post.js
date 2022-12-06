@@ -9,10 +9,10 @@ const Post = new mongoose.Schema({
         type: String,
         required: true
     },
-    img:
+    multimedia:
     {
-        data: Buffer,
-        contentType: String
+        
+        type: String
     }
 
 })

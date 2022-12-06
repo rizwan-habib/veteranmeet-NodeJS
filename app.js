@@ -1,5 +1,5 @@
 const express = require('express');
-
+const express_fileupload=require('express-fileupload')
 const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
@@ -25,9 +25,10 @@ mongoose.connect(
   console.log("Fail")
 })
 
-
+app.use(express_fileupload())
 // app.post('/login', login);
 // app.post('/create_account', create_account)
+app.post('/create_post', createpost)//done
 app.post('/profile', profile)//done
 app.post('/followperson', follow_person)//done
 app.post('/followorg', follow_org)//done
@@ -39,12 +40,12 @@ app.post('/interest_event', interestEvent)//done
 app.post('/organization_account', org_account)//done
 app.post('/organization_events', org_events);//done
 app.post('/Organization_invitation', org_invitaion)//done
-app.post('/create_post', createpost)
-app.post('/getVetPosts', get_veteran_posts)
-app.post('/getOrgPosts', get_org_posts)
-app.post('/getPersonalPosts', getPersonalPosts)
+app.post('/getVetPosts', get_veteran_posts)//done
+app.post('/getOrgPosts', get_org_posts)//done
+app.post('/getPersonalPosts', getPersonalPosts)//done
 app.post('/assignStarsbyOrg', assign_stars_byorg)//done
-app.post('/assignStarsbyVet', assign_stars_byvet)
+app.post('/assignStarsbyVet', assign_stars_byvet)//done
 
+app.use(`/uploads`, express.static('uploads'));
 
 app.listen(3001);

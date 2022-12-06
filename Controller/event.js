@@ -93,7 +93,7 @@ const suggestion_Location = async (req, res, next) => {
         if ((all_events[i].location).toLowerCase() === given_location) {
             console.log(all_events)
 
-            results.push(all_events)
+            results.push(all_events[i])
 
 
         }
