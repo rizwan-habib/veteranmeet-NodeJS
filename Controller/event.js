@@ -79,6 +79,10 @@ const suggestion = async (req, res, next) => {
     res.send(results)
 }
 
+const get_vet_events = async (req, res, next) => {
+    const vet_event = await DB.find({ email: req.body.email })   //organization org_event
+    res.send(vet_event)
+}
 
 const suggestion_Location = async (req, res, next) => {
 
@@ -141,3 +145,4 @@ exports.assign_stars_byvet = assign_stars_byvet
 exports.vet_invitaion = vet_invitaion
 exports.suggestion = suggestion
 exports.createevent = createevent
+exports.get_vet_events = get_vet_events

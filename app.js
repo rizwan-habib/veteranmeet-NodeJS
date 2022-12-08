@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 const { login } = require("./Controller/login")
 const { create_account } = require("./Controller/Creat_account")
 // const { createpost, getposts } = require('./Controller/post');
-const { createevent, suggestion, suggestion_Location, vet_invitaion, assign_stars_byvet } = require('./Controller/event');
+const { createevent, suggestion, suggestion_Location, vet_invitaion, assign_stars_byvet, get_vet_events } = require('./Controller/event');
 const { profile, follow_person, interestEvent, follow_org, get_veteran_posts, get_org_posts } = require('./Controller/profile');
 const { org_account } = require('./Controller/Organization/organization_account');
-const { org_events, assign_stars, assign_stars_byorg } = require("./Controller/Organization/Organization_event");
+const { org_events, assign_stars, assign_stars_byorg, get_org_events } = require("./Controller/Organization/Organization_event");
 const { org_invitaion } = require('./Controller/Organization/organization_invitation');
 const { getPersonalPosts, createpost } = require('./Controller/post');
 
@@ -40,6 +40,8 @@ app.post('/interest_event', interestEvent)//done
 app.post('/organization_account', org_account)//done
 app.post('/organization_events', org_events);//done
 app.post('/Organization_invitation', org_invitaion)//done
+app.post('/Org_events', get_org_events)//done
+app.post('/Vet_events', get_vet_events)//done
 app.post('/getVetPosts', get_veteran_posts)//done
 app.post('/getOrgPosts', get_org_posts)//done
 app.post('/getPersonalPosts', getPersonalPosts)//done
