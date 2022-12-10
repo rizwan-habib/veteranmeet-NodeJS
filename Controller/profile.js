@@ -1,7 +1,7 @@
 //const { Email } = require("@mui/icons-material")
 const DB = require("../Schema/profile")
 const POSTS = require("../Schema/post")
-const ORG = require("../Schema/Organization/organization_account")
+const EVENTS = require("../Schema/event")
 
 
 const profile = async (req, res, next) => {
@@ -85,10 +85,20 @@ const interestEvent = async (req, res, next) => {
     await DB.findOneAndUpdate({ email: req.body.email }, { $push: { intrestedEvents: req.body.eventID } })
     res.send("done")
 }
+const getVetInvitations = async (req, res, next) => {
+    const prof= await DB.findOne({ email: req.body.email })
+    let invitations=prof.invitations
+    let results=[]
+    for (let i = 0; i < invitations.length; i++) {
+        results.push(await EVENTS.findOne({eventid:invitations[i]})) 
+    }
+    res.send(results)
+}
 
 exports.interestEvent = interestEvent
 exports.follow_person = follow_person
 exports.get_org_posts = get_org_posts
 exports.follow_org = follow_org
+exports.getVetInvitations = getVetInvitations
 exports.get_veteran_posts = get_veteran_posts
 exports.profile = profile

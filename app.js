@@ -7,7 +7,7 @@ const { login } = require("./Controller/login")
 const { create_account } = require("./Controller/Creat_account")
 // const { createpost, getposts } = require('./Controller/post');
 const { createevent, suggestion, suggestion_Location, vet_invitaion, assign_stars_byvet, get_vet_events } = require('./Controller/event');
-const { profile, follow_person, interestEvent, follow_org, get_veteran_posts, get_org_posts } = require('./Controller/profile');
+const { profile, follow_person, interestEvent, follow_org, get_veteran_posts, get_org_posts, getVetInvitations } = require('./Controller/profile');
 const { org_account } = require('./Controller/Organization/organization_account');
 const { org_events, assign_stars, assign_stars_byorg, get_org_events } = require("./Controller/Organization/Organization_event");
 const { org_invitaion } = require('./Controller/Organization/organization_invitation');
@@ -47,6 +47,7 @@ app.post('/getOrgPosts', get_org_posts)//done
 app.post('/getPersonalPosts', getPersonalPosts)//done
 app.post('/assignStarsbyOrg', assign_stars_byorg)//done
 app.post('/assignStarsbyVet', assign_stars_byvet)//done
+app.post('/getVetInvitations', getVetInvitations)//done
 
 app.use(`/uploads`, express.static('uploads'));
 
