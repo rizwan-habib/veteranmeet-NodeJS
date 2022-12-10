@@ -14,13 +14,14 @@ const createevent = async (req, res, next) => {
         stars: Number(req.body.stars),
         location: req.body.location,
         descreption: req.body.descreption,
-        hobies: req.body.hobies
+        hobies: req.body.hobies,
+        inviteSent: false
     })
     newevent.save();
     res.send("done")
 }
 const vet_invitaion = async (req, res, next) => {
-
+    await DB.findOneAndUpdate({ eventid: req.body.eventid }, { inviteSent: true })
     const vet_profile = await profile_DB.findOne({ email: req.body.email })   //veteran profile
     let followers = vet_profile.followers
     console.log(followers)
@@ -28,7 +29,7 @@ const vet_invitaion = async (req, res, next) => {
     const results = [];
     for (let i = 0; i < followers.length; i++) {
 
-        const invitation_profile = await profile_DB.findOneAndUpdate({ email: followers[i] },{ $push: { invitations: req.body.eventid } })
+        const invitation_profile = await profile_DB.findOneAndUpdate({ email: followers[i] }, { $push: { invitations: req.body.eventid } })
 
 
         console.log(invitation_profile)
@@ -80,7 +81,7 @@ const suggestion = async (req, res, next) => {
 }
 
 const get_vet_events = async (req, res, next) => {
-    const vet_event = await DB.find({ email: req.body.email })   //organization org_event
+    const vet_event = await DB.find({ email: req.body.email, inviteSent: false })   //organization org_event
     res.send(vet_event)
 }
 
@@ -114,29 +115,29 @@ const assign_stars_byvet = async (req, res, next) => {
         await DB.findOneAndUpdate({ eventid: req.body.eventid }, { $inc: { stars: -req.body.stars } })   //event stars update
         let profile = await profile_DB.findOne({ email: req.body.email })
         console.log(profile)
-        let stars1=profile.stars;
-        if(stars1>= 100000){
+        let stars1 = profile.stars;
+        if (stars1 >= 100000) {
             await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Eternal Stage" })   //profile stars update
         }
-        else if(stars1>= 70000){
+        else if (stars1 >= 70000) {
             await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Platinum Veteran" })   //profile stars update
         }
-        else if(stars1>= 65000){
+        else if (stars1 >= 65000) {
             await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Sapphire Veteran" })   //profile stars update
         }
-        else if(stars1>= 60000){
+        else if (stars1 >= 60000) {
             await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Diamond Veteran" })   //profile stars update
         }
-        else if(stars1>= 50000){
+        else if (stars1 >= 50000) {
             await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Golden Veteran" })   //profile stars update
         }
-        else if(stars1>= 40000){
+        else if (stars1 >= 40000) {
             await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Ruby Veteran" })   //profile stars update
         }
-        else if(stars1>= 25000){
+        else if (stars1 >= 25000) {
             await profile_DB.findOneAndUpdate({ email: req.body.email }, { category: "Silver Veteran" })   //profile stars update
         }
-        
+
     }
     res.send("done")
 }

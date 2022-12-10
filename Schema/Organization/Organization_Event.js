@@ -34,7 +34,11 @@ const Event = new mongoose.Schema({
     },
     hobies: {
         type: Array
+    },
+    inviteSent:{
+        type: Boolean
     }
+
 
 })
 

@@ -13,13 +13,14 @@ const org_events = async (req, res, next) => {
         stars: Number(req.body.stars),
         location: req.body.location,
         descreption: req.body.descreption,
-        hobies: req.body.hobies
+        hobies: req.body.hobies,
+        inviteSent:false
     })
     newevent.save();
     res.send("done")
 }
 const get_org_events = async (req, res, next) => {
-    const org_event = await DB.find({ email: req.body.email })   //organization org_event
+    const org_event = await DB.find({ email: req.body.email,inviteSent:false })   //organization org_event
     res.send(org_event)
 }
 const assign_stars_byorg = async (req, res, next) => {
