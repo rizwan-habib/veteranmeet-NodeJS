@@ -18,7 +18,7 @@ const app = express();
 app.use(bodyParser.json());
 
 mongoose.connect(
-  'mongodb+srv://jerry:1234@cluster0.jwhqaxw.mongodb.net/?retryWrites=true&w=majority'
+  process.env.MONGO_URL
 ).then(() => {
   console.log("connected ")
 }).catch(() => {
